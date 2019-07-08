@@ -69,6 +69,20 @@ class SampleRepositoryMockMvcTests {
                 .andExpect(jsonPath("$.name").value("Sample Name"))
     }
 
+    @Test
+    @Throws(Exception::class)
+    fun `update test`() {
+        val mvcResult = mockMvc!!.perform(post("/samples").content(SAMPLE))
+                .andExpect(status().isCreated)
+                .andReturn()
+        val result = mvcResult.response.getHeader("Location")
+        mockMvc.perform(patch(result!!).content("{\"name\":\"Some Name\"}"))
+                .andExpect(status().isNoContent)
+        mockMvc.perform(get(result))
+                .andExpect(status().isOk)
+                .andExpect(jsonPath("$.name").value("Some Name"))
+    }
+
     companion object {
         private const val SAMPLE: String = "{\"name\":\"Sample Name\"}"
     }
