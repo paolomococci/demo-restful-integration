@@ -57,6 +57,18 @@ class SampleRepositoryMockMvcTests {
                 .andExpect(header().string("Location", containsString("samples/")))
     }
 
+    @Test
+    @Throws(Exception::class)
+    fun `read test`() {
+        val mvcResult = mockMvc!!.perform(post("/samples").content(SAMPLE))
+                .andExpect(status().isCreated)
+                .andReturn()
+        val result = mvcResult.response.getHeader("Location")
+        mockMvc.perform(get(result!!))
+                .andExpect(status().isOk)
+                .andExpect(jsonPath("$.name").value("Sample Name"))
+    }
+
     companion object {
         private const val SAMPLE: String = "{\"name\":\"Sample Name\"}"
     }
