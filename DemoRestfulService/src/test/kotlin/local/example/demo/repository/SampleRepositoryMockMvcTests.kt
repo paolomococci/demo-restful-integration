@@ -49,6 +49,14 @@ class SampleRepositoryMockMvcTests {
                 .andExpect(jsonPath("$._links.samples").exists())
     }
 
+    @Test
+    @Throws(Exception::class)
+    fun `create test`() {
+        mockMvc!!.perform(post("/samples").content(SAMPLE))
+                .andExpect(status().isCreated)
+                .andExpect(header().string("Location", containsString("samples/")))
+    }
+
     companion object {
         private const val SAMPLE: String = "{\"name\":\"Sample Name\"}"
     }
