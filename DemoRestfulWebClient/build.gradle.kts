@@ -24,13 +24,13 @@ repositories {
 
 dependencies {
     implementation("org.projectlombok:lombok:1.18.8")
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
     implementation("com.jayway.jsonpath:json-path:2.4.0")
     implementation("org.webjars:angularjs:1.7.7")
-	implementation("org.webjars.bower:angular-material:1.1.5")
-	implementation("org.webjars:hal-browser:ad9b865")
+    implementation("org.webjars.bower:angular-material:1.1.5")
+    implementation("org.webjars:hal-browser:ad9b865")
     implementation("org.webjars:bootstrap:4.3.1")
     implementation("org.webjars:jquery:3.4.1")
     implementation("org.webjars:popper.js:1.15.0")
@@ -38,11 +38,11 @@ dependencies {
     implementation("org.webjars.npm:feather-icons:4.22.1")
     implementation("org.webjars:chartjs:26962ce-1")
     implementation("org.webjars:d3js:5.9.1")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.withType<KotlinCompile> {
