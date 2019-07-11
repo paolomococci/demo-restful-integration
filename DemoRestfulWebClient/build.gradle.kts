@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.1.6.RELEASE"
-	id("io.spring.dependency-management") version "1.0.7.RELEASE"
-	kotlin("jvm") version "1.3.41"
-	kotlin("plugin.spring") version "1.3.41"
+    id("org.springframework.boot") version "2.1.6.RELEASE"
+    id("io.spring.dependency-management") version "1.0.7.RELEASE"
+    kotlin("jvm") version "1.3.41"
+    kotlin("plugin.spring") version "1.3.41"
 }
 
 group = "local.example"
@@ -13,13 +13,13 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 val developmentOnly by configurations.creating
 configurations {
-	runtimeClasspath {
-		extendsFrom(developmentOnly)
-	}
+    runtimeClasspath {
+        extendsFrom(developmentOnly)
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
@@ -33,7 +33,7 @@ dependencies {
     implementation("org.webjars:hal-browser:ad9b865")
     implementation("org.webjars:bootstrap:4.3.1")
     implementation("org.webjars:jquery:3.4.1")
-    implementation("org.webjars:popper.js:1.15.0")
+    implementation("org.webjars.npm:popper.js:1.14.3")
     implementation("org.webjars:font-awesome:5.9.0")
     implementation("org.webjars.npm:feather-icons:4.22.1")
     implementation("org.webjars:chartjs:26962ce-1")
@@ -46,8 +46,8 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "1.8"
-	}
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "1.8"
+    }
 }
