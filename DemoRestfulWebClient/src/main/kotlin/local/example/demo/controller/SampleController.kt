@@ -19,13 +19,10 @@
 package local.example.demo.controller
 
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
 class SampleController {
-
-    @CrossOrigin(origins = ["http://localhost:9090"])
     @GetMapping(value = ["/sample-page"])
     fun sample(): String {
         return "sample-page"
