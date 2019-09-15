@@ -2,45 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Index</title>
-    <link rel="stylesheet" media="all" href="/webjars/angular-material/1.1.5/angular-material.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>index</title>
+    <meta content="" name="description"/>
+    <meta content="Paolo Mococci" name="author"/>
+    <link href="/webjars/angular-material/1.1.5/angular-material.min.css" media="all" rel="stylesheet">
+    <link href="/css/index.css" media="all" rel="stylesheet">
 </head>
-<body ng-app="IndexApp" ng-cloak>
-<section ng-controller="helloCtrl" layout="column" layout-padding>
-    <md-content class="md-no-momentum">
-        <fieldset>
-            <legend>personal data</legend>
-            <img src="/img/icons/ic_person.svg"/>
-            <md-input-container class="md-icon-float md-block">
-                <label for="name">name: </label>
-                <input type="text" id="name" ng-model="user.name"/>
-            </md-input-container>
-            <md-input-container class="md-icon-float md-block">
-                <label for="surname">surname: </label>
-                <input type="text" id="surname" ng-model="user.surname"/>
-            </md-input-container>
-        </fieldset>
-    </md-content>
-    <p ng-if="user.name && user.surname">
-        {{hello()}}
-    </p>
-</section>
-<script type="text/javascript" src="/webjars/angular/1.7.8/angular.min.js"></script>
-<script type="text/javascript" src="/webjars/angular-animate/1.7.8/angular-animate.min.js"></script>
-<script type="text/javascript" src="/webjars/angular-aria/1.7.5/angular-aria.min.js"></script>
-<script type="text/javascript" src="/webjars/angular-messages/1.7.5/angular-messages.min.js"></script>
-<script type="text/javascript" src="/webjars/angular-material/1.1.5/angular-material.min.js"></script>
-<script type="text/javascript">
-    var app = angular.module('IndexApp', ['ngMaterial', 'ngMessages']);
-    app.controller('helloCtrl', function($scope) {
-        $scope.user = {
-            name: 'John', surname: 'Smith'
-        };
-        $scope.hello = function() {
-            return "Welcome " + $scope.user.name + " " + $scope.user.surname + "!";
-        }
-    });
-</script>
+<body ng-app="indexApp" ng-cloak>
+
+<div ng-controller="indexCtrl as ctrl">
+    <pm-heading></pm-heading>
+    <pm-fab-toolbar></pm-fab-toolbar>
+</div>
+
+<script src="/webjars/angular/1.7.8/angular.min.js" type="text/javascript"></script>
+<script src="/webjars/angular-animate/1.7.8/angular-animate.min.js" type="text/javascript"></script>
+<script src="/webjars/angular-aria/1.7.5/angular-aria.min.js" type="text/javascript"></script>
+<script src="/webjars/angular-messages/1.7.5/angular-messages.min.js" type="text/javascript"></script>
+<script src="/webjars/angular-route/1.7.8/angular-route.min.js" type="text/javascript"></script>
+<script src="/webjars/angular-material/1.1.5/angular-material.min.js" type="text/javascript"></script>
+<script src="/js/index.js" type="text/javascript"></script>
 </body>
 </html>
