@@ -1,0 +1,17 @@
+header {
+    text-align: center;
+    font-size: 1.3em;
+    color: #06b;
+    background-color: #efd;
+    padding: 10px;
+}
+
+md-content {
+    padding: 10px;
+}
+
+md-fab-toolbar.md-left
+
+md-fab-trigger.pm-fab {
+    left: 15px;
+}
