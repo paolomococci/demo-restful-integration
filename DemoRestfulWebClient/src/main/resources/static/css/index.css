@@ -1,4 +1,7 @@
 header {
+    border-bottom: solid #ce9;
+    border-right: solid #deb;
+    border-radius: 5%/7%;
     text-align: center;
     font-size: 1.3em;
     color: #06b;
