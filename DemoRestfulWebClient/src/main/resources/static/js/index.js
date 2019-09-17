@@ -8,6 +8,7 @@
     .directive('pmHeading', function() {
         return {
             restrict: 'E',
+            transclude: true,
             templateUrl: '/html/elements/pm-heading.html'
         }
     })
@@ -17,7 +18,7 @@
             templateUrl: '/html/elements/pm-fab-toolbar.html'
         }
     })
-    .controller('indexCtrl', function($scope) {
-
-    });
+    .controller('indexCtrl', ['$scope', function($scope) {
+        
+    }]);
 })();
