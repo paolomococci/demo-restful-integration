@@ -5,6 +5,16 @@
         'ngRoute',
         'ngMessages'
     ])
+    .config(function($routeProvider) {
+        $routeProvider
+            .when('/create', {templateUrl: '/html/partials/create.html'})
+            .when('/read', {templateUrl: '/html/partials/read.html'})
+            .when('/update', {templateUrl: '/html/partials/update.html'})
+            .when('/delete', {templateUrl: '/html/partials/delete.html'})
+            .when('/search', {templateUrl: '/html/partials/search.html'})
+            .when('/help', {templateUrl: '/html/partials/help.html'})
+            .otherwise({redirectTo: '/help'});
+    })
     .directive('pmHeading', function() {
         return {
             restrict: 'E',
@@ -19,6 +29,6 @@
         }
     })
     .controller('indexCtrl', ['$scope', function($scope) {
-        
+
     }]);
 })();
