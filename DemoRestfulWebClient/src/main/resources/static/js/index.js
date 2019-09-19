@@ -22,6 +22,13 @@
             templateUrl: '/html/elements/pm-heading.html'
         }
     })
+    .directive('pmSubheading', function() {
+        return {
+            restrict: 'E',
+            transclude: true,
+            templateUrl: '/html/elements/pm-subheading.html'
+        }
+    })
     .directive('pmFabToolbar', function() {
         return {
             restrict: 'E',
