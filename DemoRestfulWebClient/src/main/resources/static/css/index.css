@@ -18,5 +18,17 @@ pm-heading {
     text-align: center;
     font-style: italic;
     font-size: 0.9em;
-    color: #fff;
+    color: #083;
+}
+
+pm-subheading {
+    text-align: left;
+    text-indent: 10px;
+    font-style: italic;
+    font-size: 0.9em;
+    color: #083;
+}
+
+.pm-workspace {
+    min-height: 400px;
 }
