@@ -1,7 +1,6 @@
 header {
     border-bottom: solid #ce9;
     border-right: solid #deb;
-    border-radius: 5%/7%;
     background-color: #efd;
     padding: 5px;
 }
@@ -31,4 +30,10 @@ pm-subheading {
 
 .pm-workspace {
     min-height: 400px;
+}
+
+.pm-fab {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
 }
