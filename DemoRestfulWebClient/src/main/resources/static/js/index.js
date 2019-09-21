@@ -6,7 +6,7 @@
         'ngMessages'
     ])
     /* config section */
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
         $routeProvider
             .when('/create', {templateUrl: '/html/partials/create.html'})
             .when('/read', {templateUrl: '/html/partials/read.html'})
@@ -15,6 +15,10 @@
             .when('/search', {templateUrl: '/html/partials/search.html'})
             .when('/help', {templateUrl: '/html/partials/help.html'})
             .otherwise({redirectTo: '/help'});
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'self',
+            'http://localhost:9090/**'
+        ]);
     }])
     /* directives section */
     .directive('pmHeading', function() {
@@ -38,9 +42,9 @@
         }
     })
     /* controllers section */
-    .controller('helpCtrl', ['$scope', '$http', function($scope, $http) {
+    .controller('helpCtrl', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
         $scope.method = 'GET';
-        $scope.url = '';
+        $scope.url = 'samples';
     }])
     .controller('indexCtrl', ['$scope', function($scope) {
 
