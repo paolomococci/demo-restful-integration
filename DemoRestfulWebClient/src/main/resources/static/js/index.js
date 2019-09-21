@@ -5,7 +5,8 @@
         'ngRoute',
         'ngMessages'
     ])
-    .config(function($routeProvider) {
+    /* config section */
+    .config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/create', {templateUrl: '/html/partials/create.html'})
             .when('/read', {templateUrl: '/html/partials/read.html'})
@@ -14,7 +15,8 @@
             .when('/search', {templateUrl: '/html/partials/search.html'})
             .when('/help', {templateUrl: '/html/partials/help.html'})
             .otherwise({redirectTo: '/help'});
-    })
+    }])
+    /* directives section */
     .directive('pmHeading', function() {
         return {
             restrict: 'E',
@@ -35,6 +37,11 @@
             templateUrl: '/html/elements/pm-fab-toolbar.html'
         }
     })
+    /* controllers section */
+    .controller('helpCtrl', ['$scope', '$http', function($scope, $http) {
+        $scope.method = 'GET';
+        $scope.url = '';
+    }])
     .controller('indexCtrl', ['$scope', function($scope) {
 
     }]);
