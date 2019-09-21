@@ -15,6 +15,7 @@ md-fab-trigger.pm-fab {
 
 pm-heading {
     text-align: center;
+    font-family: monospace;
     font-style: italic;
     font-size: 0.9em;
     color: #083;
@@ -23,9 +24,18 @@ pm-heading {
 pm-subheading {
     text-align: left;
     text-indent: 10px;
+    font-family: monospace;
     font-style: italic;
     font-size: 0.9em;
     color: #083;
+}
+
+pm-section {
+    font-family: monospace;
+    text-align: left;
+    text-indent: 20px;
+    font-size: 14px;
+    color: #121212;
 }
 
 .pm-workspace {
