@@ -15,10 +15,9 @@
             .when('/search', {templateUrl: '/html/partials/search.html'})
             .when('/help', {templateUrl: '/html/partials/help.html'})
             .otherwise({redirectTo: '/help'});
-        $sceDelegateProvider.resourceUrlWhitelist([
-            'self',
-            'http://localhost:8080/**'
-        ]);
+        $sceDelegateProvider.resourceUrlWhitelist(
+            ['self', 'http://localhost:8080/**']
+        );
     }])
     /* directives section */
     .directive('pmHeading', function() {
