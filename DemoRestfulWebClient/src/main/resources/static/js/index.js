@@ -50,7 +50,7 @@
     /* controllers section */
     .controller('helpCtrl', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
         $scope.method = 'GET';
-        $scope.url = '/html/test/test.html';
+        $scope.url = '/html/probes/probe-one.html';
         $scope.feedback = function() {
             $scope.code = null;
             $scope.response = null;
