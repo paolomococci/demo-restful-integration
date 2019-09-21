@@ -1,0 +1,22 @@
+<div ng-cloak ng-controller="syncCtrl">
+    <md-content class="pm-workspace">
+        <pm-subheading>sync to get a feedback</pm-subheading>
+        <pm-section>
+            <p>http status code: {{ status }}</p>
+            <p>http response data: {{ data }}</p>
+        </pm-section>
+    </md-content>
+    <md-content class="pm-fab">
+        <md-fab-speed-dial>
+            <md-fab-trigger>
+                <md-button aria-label="feedback"
+                           class="md-fab md-warn"
+                           id="002"
+                           ng-click="fetch()">
+                    <md-tooltip md-direction="top">fetch</md-tooltip>
+                    <md-icon aria-label="menu" md-svg-src="/img/icons/ic_get.svg"></md-icon>
+                </md-button>
+            </md-fab-trigger>
+        </md-fab-speed-dial>
+    </md-content>
+</div>
