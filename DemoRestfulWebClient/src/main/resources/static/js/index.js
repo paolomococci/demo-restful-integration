@@ -13,6 +13,7 @@
             .when('/update', {templateUrl: '/html/partials/update.html'})
             .when('/delete', {templateUrl: '/html/partials/delete.html'})
             .when('/search', {templateUrl: '/html/partials/search.html'})
+            .when('/sync', {templateUrl: '/html/partials/sync.html'})
             .when('/help', {templateUrl: '/html/partials/help.html'})
             .otherwise({redirectTo: '/help'});
         $sceDelegateProvider.resourceUrlWhitelist(
@@ -63,6 +64,9 @@
                     $scope.status = response.status;
                 });
         };
+    }])
+    .controller('syncCtrl', ['$scope', function($scope) {
+
     }])
     .controller('indexCtrl', ['$scope', function($scope) {
 
