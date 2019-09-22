@@ -2,8 +2,21 @@
     <md-content class="pm-workspace">
         <pm-subheading>sync json file</pm-subheading>
         <pm-section>
-            <p>http status code: {{ status }}</p>
-            <p>http response data: {{ data }}</p>
+            <h4>http response status: {{ status }}</h4>
+            <table class="pm-table" summary="list of names">
+                <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in data">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                </tr>
+                </tbody>
+            </table>
         </pm-section>
     </md-content>
     <md-content class="pm-fab">
