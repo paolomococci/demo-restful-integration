@@ -53,20 +53,36 @@
         $scope.method = 'GET';
         $scope.url = '/html/probes/probe-one.html';
         $scope.feedback = function() {
-            $scope.code = null;
-            $scope.response = null;
-            $http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+            $http({
+                method: $scope.method,
+                url: $scope.url,
+                cache: $templateCache
+            }).
                 then(function(response) {
                     $scope.status = response.status;
                     $scope.data = response.data;
                 }, function(response) {
-                    $scope.data = response.data || 'error: request failed';
                     $scope.status = response.status;
+                    $scope.data = response.data || 'error: request failed';
                 });
         };
     }])
-    .controller('syncCtrl', ['$scope', function($scope) {
-
+    .controller('syncCtrl', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
+        $scope.fetch = function() {
+            var successFetch = function(response) {
+                $scope.status = response.status;
+                $scope.data = response.data;
+            };
+            var errorFetch = function(response) {
+                $scope.status = response.status;
+                $scope.data = response.data || 'error: request failed';
+            };
+            $http({
+                method: 'GET',
+                url: '/json/sample-one.json',
+                cache: $templateCache
+            }).then(successFetch, errorFetch);
+        };
     }])
     .controller('indexCtrl', ['$scope', function($scope) {
 
