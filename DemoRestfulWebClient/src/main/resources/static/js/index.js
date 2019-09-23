@@ -22,10 +22,6 @@
             'http://localhost:9090/**'
         ]);
     }])
-    /* factories */
-    /*.factory('samples', function($resource) {
-        return $resource("http://localhost:9090/api/samples");
-    })*/
     /* directives section */
     .directive('pmHeading', function() {
         return {
