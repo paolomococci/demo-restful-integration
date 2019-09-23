@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController
 class HelpRestController {
 
     @GetMapping(value = ["/help"])
-    @CrossOrigin(origins = ["*"])
+    @CrossOrigin
     fun help(): String {
         return "Hello from help service!"
     }
