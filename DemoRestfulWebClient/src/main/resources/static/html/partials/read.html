@@ -1,5 +1,22 @@
-<div ng-cloak>
+<div ng-cloak ng-controller="readCtrl">
     <md-content class="pm-workspace">
         <pm-subheading>read todo</pm-subheading>
+        <pm-section>
+            <h4>http response status: {{ status }}</h4>
+            <h4>http response help: {{ help }}</h4>
+        </pm-section>
+    </md-content>
+    <md-content class="pm-fab">
+        <md-fab-speed-dial>
+            <md-fab-trigger>
+                <md-button aria-label="fetch response"
+                           class="md-fab md-warn"
+                           id="005"
+                           ng-click="fetchResponse()">
+                    <md-tooltip md-direction="top">fetch response</md-tooltip>
+                    <md-icon aria-label="menu" md-svg-src="/img/icons/ic_web_asset.svg"></md-icon>
+                </md-button>
+            </md-fab-trigger>
+        </md-fab-speed-dial>
     </md-content>
 </div>
