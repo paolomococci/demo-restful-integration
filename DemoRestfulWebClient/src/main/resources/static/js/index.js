@@ -16,10 +16,16 @@
             .when('/sync', {templateUrl: '/html/partials/sync.html'})
             .when('/help', {templateUrl: '/html/partials/help.html'})
             .otherwise({redirectTo: '/help'});
-        $sceDelegateProvider.resourceUrlWhitelist(
-            ['self', 'http://localhost:8080/**']
-        );
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'self',
+            'http://localhost:8080/**',
+            'http://localhost:9090/**'
+        ]);
     }])
+    /* factories */
+    /*.factory('samples', function($resource) {
+        return $resource("http://localhost:9090/api/samples");
+    })*/
     /* directives section */
     .directive('pmHeading', function() {
         return {
@@ -57,13 +63,13 @@
                 method: $scope.method,
                 url: $scope.url,
                 cache: $templateCache
-            }).
-                then(function(response) {
+            })
+                .then(function(response) {
                     $scope.status = response.status;
                     $scope.data = response.data;
                 }, function(response) {
                     $scope.status = response.status;
-                    $scope.data = response.data || 'error: request failed';
+                    $scope.data = response.data || 'request failed';
                 });
         };
     }])
@@ -75,7 +81,7 @@
             };
             var errorFetch = function(response) {
                 $scope.status = response.status;
-                $scope.data = response.data || 'error: request failed';
+                $scope.data = response.data || 'request failed';
             };
             $http({
                 method: 'GET',
@@ -83,6 +89,9 @@
                 cache: $templateCache
             }).then(successFetch, errorFetch);
         };
+    }])
+    .controller('readCtrl', ['$scope', function($scope) {
+        $scope.fetchResponse = function() {};
     }])
     .controller('indexCtrl', ['$scope', function($scope) {
 
