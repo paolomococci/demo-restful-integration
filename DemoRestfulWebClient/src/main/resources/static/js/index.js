@@ -6,7 +6,7 @@
         'ngMessages'
     ])
     /* config section */
-    .config(['$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
+    .config(['$routeProvider', '$sceDelegateProvider', function($routeProvider) {
         $routeProvider
             .when('/create', {templateUrl: '/html/partials/create.html'})
             .when('/read', {templateUrl: '/html/partials/read.html'})
@@ -16,11 +16,6 @@
             .when('/sync', {templateUrl: '/html/partials/sync.html'})
             .when('/help', {templateUrl: '/html/partials/help.html'})
             .otherwise({redirectTo: '/help'});
-        $sceDelegateProvider.resourceUrlWhitelist([
-            'self',
-            'http://localhost:8080/**',
-            'http://localhost:9090/**'
-        ]);
     }])
     /* directives section */
     .directive('pmHeading', function() {
@@ -53,7 +48,7 @@
     /* controllers section */
     .controller('helpCtrl', ['$scope', '$http', '$templateCache', function($scope, $http, $templateCache) {
         $scope.method = 'GET';
-        $scope.url = '/html/probes/probe-one.html';
+        $scope.url = 'http://localhost:8080/html/probes/probe-one.html';
         $scope.feedback = function() {
             $http({
                 method: $scope.method,
@@ -81,13 +76,22 @@
             };
             $http({
                 method: 'GET',
-                url: '/json/sample-one.json',
+                url: 'http://localhost:8080/json/sample-one.json',
                 cache: $templateCache
             }).then(successFetch, errorFetch);
         };
     }])
-    .controller('readCtrl', ['$scope', function($scope) {
-        $scope.fetchResponse = function() {};
+    .controller('readCtrl', ['$scope', '$http', function($scope, $http) {
+        $scope.fetchResponse = function() {
+            $http.get('http://127.0.0.1:9090/api/help')
+                .then(function(response) {
+                    $scope.status = response.status;
+                    $scope.data = response.data;
+                }, function(response) {
+                    $scope.status = response.status;
+                    $scope.help = response.data || 'request failed';
+                });
+        };
     }])
     .controller('indexCtrl', ['$scope', function($scope) {
 
