@@ -29,8 +29,8 @@ class RestConfig : WebMvcConfigurer {
 
     override fun addCorsMappings(corsRegistry: CorsRegistry) {
         corsRegistry
-                .addMapping("/**")
-                .allowedOrigins("*")
+                .addMapping("/api/help")
+                .allowedOrigins("http://localhost:9090")
                 .allowedMethods("GET")
     }
 }
