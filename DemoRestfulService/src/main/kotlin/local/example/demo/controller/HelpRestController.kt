@@ -1,4 +1,4 @@
-/**
+ /**
  *
  * Copyright 2019 paolo mococci
  *
@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController
 class HelpRestController {
 
     @GetMapping(value = ["/help"])
-    @CrossOrigin
+    @CrossOrigin(origins = ["http://localhost:9090"])
     fun help(): String {
         return "Hello from help service!"
     }
