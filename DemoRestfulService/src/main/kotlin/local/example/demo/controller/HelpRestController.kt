@@ -28,8 +28,15 @@ import org.springframework.web.bind.annotation.RestController
 class HelpRestController {
 
     @GetMapping(value = ["/help"])
-    @CrossOrigin(origins = ["http://localhost:9090"])
+    @CrossOrigin(origins = ["*"])
     fun help(): String {
-        return "Hello from help service!"
+        return "[\n" +
+                "  {\"id\" : 1, \"name\" :  \"John\"},\n" +
+                "  {\"id\" : 2, \"name\" :  \"Jada\"},\n" +
+                "  {\"id\" : 3, \"name\" :  \"Paul\"},\n" +
+                "  {\"id\" : 4, \"name\" :  \"Cloe\"},\n" +
+                "  {\"id\" : 5, \"name\" :  \"Robert\"},\n" +
+                "  {\"id\" : 6, \"name\" :  \"Zoe\"}\n" +
+                "]"
     }
 }
