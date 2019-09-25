@@ -27,10 +27,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 @EnableWebMvc
 class RestConfig : WebMvcConfigurer {
 
-    override fun addCorsMappings(corsRegistry: CorsRegistry) {
-        corsRegistry
-                .addMapping("/api/help")
-                .allowedOrigins("http://localhost:9090")
-                .allowedMethods("GET")
+    override fun addCorsMappings(registry: CorsRegistry) {
+        registry.addMapping("/**")
     }
 }
