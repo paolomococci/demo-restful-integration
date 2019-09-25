@@ -81,9 +81,11 @@
             }).then(successFetch, errorFetch);
         };
     }])
-    .controller('readCtrl', ['$scope', '$http', function($scope, $http) {
+    .controller('readCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
         $scope.fetchResponse = function() {
-            $http.get('http://127.0.0.1:9090/api/help')
+            var url = 'http://127.0.0.1:9090/api/help';
+            var trustedUrl = $sce.trustAsResourceUrl(url);
+            $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'})
                 .then(function(response) {
                     $scope.status = response.status;
                     $scope.data = response.data;
