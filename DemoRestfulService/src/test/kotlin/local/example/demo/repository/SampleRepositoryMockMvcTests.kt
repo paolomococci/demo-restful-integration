@@ -33,13 +33,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 @RunWith(SpringRunner::class)
 @SpringBootTest
 @AutoConfigureMockMvc
-class SampleRepositoryMockMvcTests {
+class VineRepositoryMockMvcTests {
 
     @Autowired
     private val mockMvc: MockMvc? = null
 
     @Autowired
-    private val sampleRepository: SampleRepository? = null
+    private val vineRepository: VineRepository? = null
 
     @Test
     @Throws(Exception::class)
@@ -47,47 +47,47 @@ class SampleRepositoryMockMvcTests {
         mockMvc!!.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isOk)
-                .andExpect(jsonPath("$._links.samples").exists())
+                .andExpect(jsonPath("$._links.vines").exists())
     }
 
     @Test
     @Throws(Exception::class)
     fun `create test`() {
-        mockMvc!!.perform(post("/samples").content(SAMPLE))
+        mockMvc!!.perform(post("/vines").content(SAMPLE))
                 .andExpect(status().isCreated)
-                .andExpect(header().string("Location", containsString("samples/")))
+                .andExpect(header().string("Location", containsString("vines/")))
     }
 
     @Test
     @Throws(Exception::class)
     fun `read test`() {
-        val mvcResult = mockMvc!!.perform(post("/samples").content(SAMPLE))
+        val mvcResult = mockMvc!!.perform(post("/vines").content(SAMPLE))
                 .andExpect(status().isCreated)
                 .andReturn()
         val result = mvcResult.response.getHeader("Location")
         mockMvc.perform(get(result!!))
                 .andExpect(status().isOk)
-                .andExpect(jsonPath("$.name").value("Sample Name"))
+                .andExpect(jsonPath("$.name").value("Sagrantino"))
     }
 
     @Test
     @Throws(Exception::class)
     fun `update test`() {
-        val mvcResult = mockMvc!!.perform(post("/samples").content(SAMPLE))
+        val mvcResult = mockMvc!!.perform(post("/vines").content(SAMPLE))
                 .andExpect(status().isCreated)
                 .andReturn()
         val result = mvcResult.response.getHeader("Location")
-        mockMvc.perform(patch(result!!).content("{\"name\":\"Some Name\"}"))
+        mockMvc.perform(patch(result!!).content("{\"name\":\"Sagrantino\"}"))
                 .andExpect(status().isNoContent)
         mockMvc.perform(get(result))
                 .andExpect(status().isOk)
-                .andExpect(jsonPath("$.name").value("Some Name"))
+                .andExpect(jsonPath("$.name").value("Sagrantino"))
     }
 
     @Test
     @Throws(Exception::class)
     fun `delete test`() {
-        val mvcResult = mockMvc!!.perform(post("/samples").content(SAMPLE))
+        val mvcResult = mockMvc!!.perform(post("/vines").content(SAMPLE))
                 .andExpect(status().isCreated)
                 .andReturn()
         val result = mvcResult.response.getHeader("Location")
@@ -96,6 +96,6 @@ class SampleRepositoryMockMvcTests {
     }
 
     companion object {
-        private const val SAMPLE: String = "{\"name\":\"Sample Name\"}"
+        private const val SAMPLE: String = "{\"name\":\"Ciliegiolo\"}"
     }
 }
