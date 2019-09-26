@@ -18,18 +18,46 @@
 
 package local.example.demo.controller
 
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import local.example.demo.assembler.VineResourceAssembler
+import local.example.demo.exception.VineNotFoundException
+import local.example.demo.model.Vine
+import local.example.demo.repository.VineRepository
+import org.springframework.hateoas.Resource
+import org.springframework.hateoas.Resources
+import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
+import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
+import org.springframework.web.bind.annotation.*
+import java.net.URISyntaxException
 
 @RestController
-@RequestMapping(value = ["/api"])
-class SampleRestController {
+@RequestMapping(value = ["/api/vines"])
+class VineRestController(
+        private val vineRepository: VineRepository,
+        private val vineResourceAssembler: VineResourceAssembler
+) {
 
-    @GetMapping(value = ["/sample"])
+    @GetMapping(value = ["/{id}"])
     @CrossOrigin(origins = ["*"])
-    fun sample(): String {
-        return "TODO"
+    @Throws(URISyntaxException::class)
+    internal fun read(@PathVariable id: Long?): Resource<Vine> {
+        val vine = vineRepository.findById(id!!)
+                .orElseThrow {
+            VineNotFoundException(id)
+        }
+        return vineResourceAssembler.toResource(vine)
+    }
+
+    @GetMapping
+    @CrossOrigin(origins = ["*"])
+    @Throws(URISyntaxException::class)
+    internal fun readAll(): Resources<Resource<Vine>> {
+        val vines = vineRepository.findAll()
+                .asSequence()
+                .map(vineResourceAssembler::toResource).toList()
+        return Resources(
+                vines,
+                linkTo(methodOn(VineRestController::class.java).readAll())
+                        .withSelfRel()
+        )
     }
 }
