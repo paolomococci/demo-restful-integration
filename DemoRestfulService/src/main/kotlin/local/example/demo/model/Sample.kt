@@ -21,11 +21,13 @@ package local.example.demo.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "samples")
-data class Sample(
+@Table(name = "vines")
+data class Vine(
         @Id
         @GeneratedValue
         val id: Long,
         @Column(nullable = true)
-        val name: String? = null
+        val name: String? = null,
+        @Column(nullable = true)
+        val color: String? = null
 )
