@@ -18,9 +18,13 @@
 
 package local.example.demo.repository
 
-import local.example.demo.model.Sample
+import local.example.demo.model.Vine
 import org.springframework.data.repository.CrudRepository
+import org.springframework.data.repository.query.Param
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
 
 @RepositoryRestResource
-interface SampleRepository : CrudRepository<Sample, Long>
+interface VineRepository : CrudRepository<Vine, Long> {
+    fun findByName(@Param("name") name: String): List<Vine>
+    fun findByColor(@Param("color") color: String): List<Vine>
+}
