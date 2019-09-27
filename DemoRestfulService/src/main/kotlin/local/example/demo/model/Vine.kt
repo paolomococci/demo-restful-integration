@@ -22,12 +22,21 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "vines")
-data class Vine(
-        @Id
-        @GeneratedValue
-        val id: Long,
-        @Column(nullable = true)
-        val name: String? = null,
-        @Column(nullable = true)
-        val color: String? = null
-)
+class Vine() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null
+    @Column(nullable = true)
+    var name: String? = null
+    @Column(nullable = true)
+    var color: String? = null
+
+    constructor(name: String) : this() {
+        this.name = name
+    }
+
+    constructor(name: String, color: String) : this() {
+        this.name = name
+        this.color = color
+    }
+}
