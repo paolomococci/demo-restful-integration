@@ -26,7 +26,9 @@ import org.springframework.hateoas.Resource
 import org.springframework.hateoas.Resources
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.net.URI
 import java.net.URISyntaxException
 
 @RestController
@@ -35,6 +37,15 @@ class VineRestController(
         private val vineRepository: VineRepository,
         private val vineResourceAssembler: VineResourceAssembler
 ) {
+
+    @PostMapping
+    @CrossOrigin(origins = ["*"])
+    @Throws(URISyntaxException::class)
+    internal fun create(@RequestBody vine: Vine): ResponseEntity<Resource<Vine>> {
+        val resource = vineResourceAssembler.toResource(vineRepository.save(vine))
+        return ResponseEntity.created(URI(resource.id.expand().href)).body(resource)
+    }
+
 
     @GetMapping(value = ["/{id}"])
     @CrossOrigin(origins = ["*"])
