@@ -67,7 +67,7 @@ class VineRepositoryMockMvcTests {
         val result = mvcResult.response.getHeader("Location")
         mockMvc.perform(get(result!!))
                 .andExpect(status().isOk)
-                .andExpect(jsonPath("$.name").value("Sagrantino"))
+                .andExpect(jsonPath("$.name").value("Colorino"))
     }
 
     @Test
@@ -77,11 +77,11 @@ class VineRepositoryMockMvcTests {
                 .andExpect(status().isCreated)
                 .andReturn()
         val result = mvcResult.response.getHeader("Location")
-        mockMvc.perform(patch(result!!).content("{\"name\":\"Sagrantino\"}"))
+        mockMvc.perform(patch(result!!).content("{\"name\":\"Canaiolo\"}"))
                 .andExpect(status().isNoContent)
         mockMvc.perform(get(result))
                 .andExpect(status().isOk)
-                .andExpect(jsonPath("$.name").value("Sagrantino"))
+                .andExpect(jsonPath("$.name").value("Canaiolo"))
     }
 
     @Test
@@ -96,6 +96,6 @@ class VineRepositoryMockMvcTests {
     }
 
     companion object {
-        private const val SAMPLE: String = "{\"name\":\"Ciliegiolo\"}"
+        private const val SAMPLE: String = "{\"name\":\"Colorino\"}"
     }
 }
