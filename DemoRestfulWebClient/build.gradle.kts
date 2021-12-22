@@ -24,7 +24,7 @@ dependencies {
     implementation("org.webjars:angularjs:2.0.0-alpha.22")
     implementation("org.webjars.bower:angular-sanitize:1.8.2")
     implementation("org.webjars.npm:angular-route:1.8.2")
-    implementation("org.webjars.bower:angular-material:1.1.5")
+    implementation("org.webjars.bower:angular-material:1.1.21")
     implementation("org.webjars:hal-browser:ad9b865")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
