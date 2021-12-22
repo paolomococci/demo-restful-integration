@@ -22,7 +22,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-hateoas")
     implementation("com.jayway.jsonpath:json-path:2.6.0")
     implementation("org.webjars:angularjs:2.0.0-alpha.22")
-    implementation("org.webjars.bower:angular-sanitize:1.7.8")
+    implementation("org.webjars.bower:angular-sanitize:1.8.2")
     implementation("org.webjars.npm:angular-route:1.8.2")
     implementation("org.webjars.bower:angular-material:1.1.5")
     implementation("org.webjars:hal-browser:ad9b865")
